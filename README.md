@@ -43,4 +43,3 @@ yarn create next-app --typescript
 yarn add @apollo/client graphql
 yarn dev
 ```
-

@@ -6,6 +6,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ├── .next
 ├── node_modules
 ├── pages
+│   ├── components
+│       ├── Navbar.tsx
+│       └── Footer.tsx
 │   ├── index.tsx
 │   ├── App.tsx
 │   ├── EverydayHealth.tsx
@@ -13,9 +16,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 │   ├── Lifestyle.tsx
 │   ├── MentalHealth.tsx
 │   ├── Sex.tsx
-│   ├── Skin.tsx
-│   ├── Hair.tsx
-│   └── Components.modules.css
+│   └── Skin.tsx
 ├── public
 │   ├── favicon.ico
 │   ├── next.svg

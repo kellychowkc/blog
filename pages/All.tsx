@@ -6,6 +6,7 @@ import styles from '../styles/home.module.css'
 import Image from 'next/image'
 import bg from './assets/bgImage.png'
 import Tab from './Tab'
+import Articles from './Articles'
 
 function All() {
   return (
@@ -40,6 +41,10 @@ function All() {
       </Col>
       <Col>
         <div className={styles.line}></div>
+      </Col>
+      <Col>
+        {' '}
+        <Articles />
       </Col>
     </Container>
   )

@@ -38,6 +38,9 @@ function All() {
       <Col>
         <Tab />
       </Col>
+      <Col>
+        <div className={styles.line}></div>
+      </Col>
     </Container>
   )
 }

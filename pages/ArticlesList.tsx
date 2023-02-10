@@ -69,9 +69,20 @@ function Articles() {
 
   return (
     <Container className={styles.container}>
-      <Row>
+      <Row className={styles.box}>
         {articleList!.map((article) => (
-          <div key={article.id}>{article.title}</div>
+          <>
+            <div key={article.id} className={styles.post}>
+              <div className={styles.image}> Image</div>
+              <div className={styles.content}>
+                <h2 className={styles.title}>{article.title}</h2>
+                <a href={article.url} target={'_blank'} rel={'noreferrer'}>
+                  <h6 className={styles.read}>READ THIS ARTICLE</h6>
+                </a>
+              </div>
+            </div>
+            <div className={styles.line}></div>
+          </>
         ))}
       </Row>
     </Container>

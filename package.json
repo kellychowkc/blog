@@ -22,6 +22,7 @@
     "install": "^0.13.0",
     "mdb-react-ui-kit": "^5.1.0",
     "next": "13.1.6",
+    "open-graph-scraper": "^5.0.5",
     "qs": "^6.11.0",
     "react": "18.2.0",
     "react-bootstrap": "^2.7.0",

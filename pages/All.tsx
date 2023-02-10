@@ -6,7 +6,7 @@ import styles from '../styles/home.module.css'
 import Image from 'next/image'
 import bg from './assets/bgImage.png'
 import Tab from './Tab'
-import Articles from './Articles'
+import ArticlesList from './ArticlesList'
 
 function All() {
   return (
@@ -43,8 +43,7 @@ function All() {
         <div className={styles.line}></div>
       </Col>
       <Col>
-        {' '}
-        <Articles />
+        <ArticlesList />
       </Col>
     </Container>
   )

@@ -4,10 +4,8 @@ import {
   ApolloProvider,
   gql,
   InMemoryCache,
-  useLazyQuery,
 } from '@apollo/client'
 import { RestLink } from 'apollo-link-rest'
-import { json } from 'stream/consumers'
 
 type Appinput = {
   Component: any
@@ -30,10 +28,6 @@ function App({ Component }: Appinput) {
     cache: new InMemoryCache(),
     link: restLink,
   })
-
-  // client.query({ query }).then((response) => {
-  //   console.log(response.data)
-  // })
 
   return (
     <ApolloProvider client={client}>

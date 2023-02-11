@@ -5,7 +5,7 @@
 }
 
 .colorBox {
-  height: 39vw;
+  height: 43vw;
   padding: 5rem 0;
   background-color: rgb(183, 199, 201);
   display: flex;
@@ -43,9 +43,10 @@
 }
 
 .title {
-  margin: 1rem 0 1rem;
-  font-weight: bolder;
-  font-size: calc(3.8rem + (8 * (100vw - 360px)) / 407);
+  font-family: SofiaProWeb;
+  margin: 3.5rem 0 0.5rem;
+  font-weight: 400;
+  font-size: calc(4.2rem + (8 * (100vw - 360px)) / 407);
 }
 
 .subtitle {
@@ -53,10 +54,9 @@
   padding: 0.5rem 0 0 0;
   margin: 0;
   font-size: calc(0.7rem + (4 * (100vw - 360px)) / 407);
-  color: rgba(0, 0, 0, 0.88);
   line-height: 1.6;
   letter-spacing: 1.2px;
-  font-weight: 400;
+  font-weight: bolder;
 }
 
 .contentBox {
@@ -69,7 +69,7 @@
 .discover {
   padding-top: 128px;
   color: rgb(204, 131, 92);
-  margin-bottom: 2.6em;
+  margin-bottom: 2em;
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.25;
@@ -77,12 +77,20 @@
 }
 
 .explore {
-  font-weight: 600;
-  line-height: 1.25;
+  font-family: SofiaProWeb;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  line-height: 2;
   text-align: center;
   font-size: calc(1rem + (16 * (100vw - 360px)) / 407);
 }
-@media (max-width: 850px) {
+
+.line {
+  background-color: rgb(238, 226, 215);
+  height: 0.125rem;
+  width: 100%;
+}
+@media (max-width: 900px) {
   .colorBox {
     display: block;
   }

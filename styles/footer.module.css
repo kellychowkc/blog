@@ -1,0 +1,81 @@
+.footer {
+  color: rgb(255, 255, 255);
+  background-color: black;
+}
+
+.footerBox {
+  padding: 4rem 3rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form {
+  height: 100%;
+  width: 24rem;
+  margin-bottom: 60px;
+  padding: 0 0.5rem;
+}
+
+.title {
+  letter-spacing: 1.5px;
+  word-spacing: 1px;
+  line-height: 1.5;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+}
+
+.email {
+  height: 3rem;
+  width: 200px;
+}
+
+.emailInput {
+  padding: 1rem;
+  font-size: 1rem;
+  color: rgb(255, 255, 255);
+  height: 100%;
+  width: 120%;
+  background-color: black;
+  border: 1px solid rgba(255, 255, 255, 0.464);
+  border-radius: 10px;
+}
+
+.section {
+  height: 100%;
+  padding-left: 3rem;
+  font-size: 16px;
+}
+
+.subtitle {
+  padding: 2rem 0;
+  font-size: 14px;
+}
+
+.smallTitle {
+  width: fit-content;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.smallTitle:hover {
+  transition: all 200ms;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.878);
+}
+.smallText {
+  width: 8rem;
+  font-size: 12px;
+  padding-top: 0.3rem;
+  color: rgba(255, 255, 255, 0.305);
+  line-height: 15px;
+}
+@media only screen and (max-width: 850px) {
+  .footerBox {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}

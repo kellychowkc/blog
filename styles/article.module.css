@@ -1,0 +1,256 @@
+.container {
+  margin: 0 2rem;
+  padding: 4rem 3rem;
+}
+
+.box {
+  margin: 0 3rem;
+}
+
+.post {
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+}
+
+.line {
+  background-color: rgb(238, 226, 215);
+  height: 0.125rem;
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.title {
+  font-family: Sofia;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  font-size: calc(1.25rem + (4 * (100vw - 360px)) / 407);
+}
+
+.newTitle {
+  font-family: Sofia;
+  font-weight: 600;
+  line-height: 1.5;
+  font-size: calc(1.5rem + (4 * (100vw - 360px)) / 407);
+}
+
+.subtitle {
+  font-family: Sofia;
+  font-weight: 400;
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.55556;
+  margin-bottom: 32px;
+}
+
+.content {
+  height: 100%;
+  width: 100%;
+  margin-left: 4.21%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.read {
+  font-family: Sofia;
+  width: fit-content;
+  padding-bottom: 0.25rem;
+  border-bottom: 0.125rem solid currentcolor;
+  font-weight: 900;
+
+  text-align: center;
+  text-transform: uppercase;
+  transition: all 100ms ease-in 0s;
+  font-size: 0.75rem;
+  letter-spacing: 0.125em;
+  line-height: 1;
+}
+.imageBox {
+  width: 51%;
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+  height: 28.75rem;
+  background-size: cover;
+  background-position: center 25%;
+  background-repeat: no-repeat;
+}
+
+/* new post */
+
+.newPostMenu {
+  position: fixed;
+  bottom: 35px;
+  right: 40px;
+  margin-top: 1px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  width: 3rem;
+  background-color: rgb(204, 131, 92);
+  color: #ffffff;
+  outline: none;
+  border: solid rgb(204, 131, 92);
+  border-radius: 50%;
+}
+.addbtn {
+  padding: 2px;
+  height: 2rem;
+  width: 2rem;
+  transition: all 0.5s ease;
+  size: 15rem;
+}
+
+.newPostMenuList {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 50%;
+  transition: all 0.3s;
+  height: 75%;
+}
+
+.newPostMenuList.active {
+  background-color: rgb(221, 167, 138);
+  top: 15%;
+  left: 25%;
+  bottom: 10%;
+  border-radius: 2rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.menuListHead {
+  margin-left: 2rem;
+  width: 100%;
+  height: 5rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.titleBox {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.buttonBox {
+  padding-right: 1rem;
+  height: auto;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.cross {
+  height: 30px;
+  width: 30px;
+  margin-bottom: 0.5rem;
+}
+
+/* form */
+
+.form {
+  padding: 0 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 0.5rem;
+}
+.input {
+  background-color: inherit;
+  margin-bottom: 1rem;
+  width: auto;
+  padding: 1rem;
+  border: 2px solid rgb(196, 141, 113);
+  border-radius: 10px;
+  font-family: monospace;
+}
+
+.textarea {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 1rem;
+}
+
+.input2 {
+  background-color: inherit;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  border: 2px solid rgb(196, 141, 113);
+  border-radius: 10px;
+  font-family: monospace;
+}
+
+.imageContainer input[type='file'] {
+  cursor: pointer;
+  height: 100%;
+  opacity: 0 !important;
+  position: absolute;
+  width: 100%;
+}
+
+.postImage {
+  max-width: 80%;
+  max-height: 70%;
+}
+
+.uploadBtn {
+  width: fit-content;
+  height: 100%;
+  padding-bottom: 1rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 0.65rem 3rem;
+  background-color: rgb(204, 151, 125);
+  border: solid rgb(204, 151, 125);
+  border-radius: 15px;
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 900px) {
+  .container {
+    margin: 0;
+    padding: 3rem 0rem;
+  }
+
+  .post {
+    display: block;
+  }
+  .imageBox {
+    width: 100%;
+  }
+  .image {
+    padding-bottom: 2rem;
+    width: 100%;
+    height: 15.5rem;
+    background-size: cover;
+    background-position: center 25%;
+    background-repeat: no-repeat;
+  }
+  .newPostMenu {
+    right: 20px;
+  }
+}

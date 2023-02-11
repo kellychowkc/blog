@@ -1,8 +1,24 @@
+@font-face {
+  font-family: 'Sofia';
+  src: url('/font/SofiaProLight.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SofiaProWeb';
+  src: url('/font/SofiaProBold.ttf');
+  font-weight: normal; /* semi-bold */
+  font-style: normal;
+}
+
 body {
-  font-family: SofiaProWeb, Helvetica, Arial, sans-serif;
+  font-family: Sofia, SofiaProWeb, Helvetica, Arial, sans-serif;
   margin: 0 auto;
   min-height: 100vh;
   min-width: 100vw;
+  background-color: rgb(251, 248, 245);
+  font-size: 1.5rem;
 }
 
 :root {
@@ -13,8 +29,6 @@ body {
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
 
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
@@ -45,6 +59,29 @@ body {
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
+}
+
+.dark-mode {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 16, 16, 16;
+
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
+}
+
+.dark-mode .my-element {
+  color: inherit;
+}
+
+.header {
+  background-color: rgb(var(--background-end-rgb));
+}
+.nav {
+  background-color: rgb(var(--background-end-rgb));
 }
 
 @media (prefers-color-scheme: dark) {
@@ -94,12 +131,6 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
 
 a {

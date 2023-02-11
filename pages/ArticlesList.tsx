@@ -4,7 +4,6 @@ import styles from '../styles/article.module.css'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import URLPreview from './URLPreview'
 import Image from 'next/image'
 
 const query = gql`
@@ -90,7 +89,6 @@ function Articles() {
 
   return (
     <Container className={styles.container}>
-      <URLPreview />
       <Row className={styles.box}>
         {articleList &&
           articleList.map((article) => (

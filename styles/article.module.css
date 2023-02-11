@@ -4,11 +4,10 @@
 }
 
 .box {
-  margin: 0 2rem;
+  margin: 0 3rem;
 }
 
 .post {
-  color: rgba(0, 0, 0, 0.88);
   margin-bottom: 32px;
   padding-bottom: 32px;
   display: flex;
@@ -20,19 +19,20 @@
   background-color: rgb(238, 226, 215);
   height: 0.125rem;
   width: 100%;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 .title {
-  font-family: SofiaProWeb, Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  font-family: Sofia;
+  font-weight: 600;
   line-height: 1.5;
   margin-bottom: 16px;
   font-size: calc(1.25rem + (4 * (100vw - 360px)) / 407);
 }
 
 .subtitle {
-  font-family: SofiaProWeb, Helvetica, Arial, sans-serif;
+  font-family: Sofia;
+  font-weight: 400;
   text-align: left;
   font-size: 1rem;
   line-height: 1.55556;
@@ -49,10 +49,12 @@
   justify-content: flex-start;
 }
 .read {
+  font-family: Sofia;
   width: fit-content;
   padding-bottom: 0.25rem;
   border-bottom: 0.125rem solid currentcolor;
-  font-weight: 600;
+  font-weight: 900;
+
   text-align: center;
   text-transform: uppercase;
   transition: all 100ms ease-in 0s;
@@ -81,6 +83,9 @@
 
   .post {
     display: block;
+  }
+  .imageBox {
+    width: 100%;
   }
   .image {
     padding-bottom: 2rem;

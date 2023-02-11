@@ -3,14 +3,14 @@
   display: flex;
   overflow-x: scroll;
   padding: 1rem 0;
-  margin: 0.5rem 0 1rem;
+  margin: 0rem 0 1rem;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
 }
 
 .tabitem {
-  padding: 0.5rem 0.5rem 0.2rem 0.5rem;
+  padding: 0rem 0.5rem 0.2rem 0.5rem;
   display: flex;
   justify-content: center;
   min-width: 140px;
@@ -30,7 +30,8 @@
 }
 
 .tabText {
+  font-family: Sofia;
   font-size: 1.4rem;
-  font-weight: 500;
+  font-weight: 900;
   letter-spacing: 1px;
 }

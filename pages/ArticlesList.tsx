@@ -4,7 +4,8 @@ import styles from '../styles/article.module.css'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import ogs from 'open-graph-scraper'
+import URLPreview from './URLPreview'
+import Image from 'next/image'
 
 const query = gql`
   query GetArticleByID($id: ID) {
@@ -18,7 +19,7 @@ const query = gql`
     }
   }
 `
-type Article = {
+interface Article {
   id: number
   deleted?: boolean
   type?: string
@@ -28,17 +29,10 @@ type Article = {
   kids?: [number]
   descendants?: number
   score?: number
-  title?: string
-  url?: string
+  title: string
+  url: string
+  image?: string
 }
-
-// ogs({ url: 'http://ogp.me/' }, (error, result) => {
-//   if (error) {
-//     console.error(error)
-//   } else {
-//     console.log(result)
-//   }
-// })
 
 function Articles() {
   const [fetch] = useLazyQuery(query)
@@ -47,6 +41,7 @@ function Articles() {
 
   useEffect(() => {
     let list: Article[] = []
+    let updateList: Article[] = []
     const fetchData = async (time: number) => {
       try {
         const res = await fetch({
@@ -64,13 +59,30 @@ function Articles() {
           const result: any = await fetchData(i)
           if (result) {
             const item = result.data.item
+
+            console.log('check', item)
             if (!list.find((existingItem) => existingItem.id === item.id)) {
               list.push(item)
             }
           }
         } catch (error) {}
       }
-      setArticleList(list)
+      list.forEach((article: Article) => {
+        if (article.id < 11) {
+          const updatedArticle = Object.assign({}, article, {
+            image: `/image/image${article.id}.jpeg`,
+          })
+          updateList.push(updatedArticle)
+        } else {
+          let newId = article.id - 10
+          const updatedArticle = Object.assign({}, article, {
+            image: `/image/image${newId}.jpeg`,
+          })
+          updateList.push(updatedArticle)
+        }
+      })
+
+      setArticleList(updateList)
     })()
   }, [])
 
@@ -78,12 +90,19 @@ function Articles() {
 
   return (
     <Container className={styles.container}>
+      <URLPreview />
       <Row className={styles.box}>
         {articleList &&
           articleList.map((article) => (
-            <>
-              <div key={article.id} className={styles.post}>
-                <div className={styles.image}> Image</div>
+            <div key={article.id}>
+              <div className={styles.post}>
+                <div className={styles.imageBox}>
+                  <img
+                    src={article.image}
+                    alt="image"
+                    className={styles.image}
+                  ></img>
+                </div>
                 <div className={styles.content}>
                   <h2 className={styles.title}>{article.title}</h2>
                   <p className={styles.subtitle}>{article.by}</p>
@@ -93,7 +112,7 @@ function Articles() {
                 </div>
               </div>
               <div className={styles.line}></div>
-            </>
+            </div>
           ))}
       </Row>
     </Container>

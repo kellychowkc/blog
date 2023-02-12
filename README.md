@@ -1,8 +1,8 @@
+# Blog
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-# blog
-
-```Folder Structure
+## Folder Structure
+```
 ├── .next
 ├── node_modules
 ├── pages
@@ -57,9 +57,9 @@ yarn dev
 ## Deploy
 
 ```
-1. heroku create
-2. heroku buildpacks:add heroku/nodejs
-3. git add .
-4. git commit -m "Add Heroku build scripts"
-5. git push heroku main
+heroku create
+heroku buildpacks:add heroku/nodejs
+git add .
+git commit -m "Add Heroku build scripts"
+git push heroku main
 ```

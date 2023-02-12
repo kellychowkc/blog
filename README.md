@@ -57,9 +57,9 @@ yarn dev
 ## Deploy
 
 ```
-1. heroku create
-2. heroku buildpacks:add heroku/nodejs
-3. git add .
-4. git commit -m "Add Heroku build scripts"
-5. git push heroku main
+heroku create
+heroku buildpacks:add heroku/nodejs
+git add .
+git commit -m "Add Heroku build scripts"
+git push heroku main
 ```

@@ -5,8 +5,25 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import { RxCross2 } from 'react-icons/rx'
 import { BiAddToQueue } from 'react-icons/bi'
-import { Article } from './schema/type'
 import { fetchPreview } from './api/fetchPreview'
+
+export interface Article {
+  id: number
+  deleted?: boolean
+  type?: string
+  by?: string
+  time?: number
+  dead?: boolean
+  kids?: [number]
+  descendants?: number
+  score?: number
+  title?: string
+  url: string
+  image?: string | any | null
+  description?: string
+  new?: Boolean
+  defaultPic?: Boolean
+}
 
 const query = gql`
   query GetArticleByID($id: ID) {

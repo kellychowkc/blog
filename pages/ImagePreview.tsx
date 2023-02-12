@@ -1,15 +1,23 @@
 import { useEffect, useState } from 'react'
-import { Article, ImagePreviewProps, Post } from './schema/type'
+
 import styles from '../styles/article.module.css'
 import { fetchUrlPreview } from './api/fetchPreview'
+import { Article } from './ArticlesList'
+
+export type Post = {
+  ogTitle?: string
+  ogImage?: any
+  ogDescription?: any
+}
+
+export interface ImagePreviewProps {
+  article: Article
+}
 
 function ImagePreview({ article }: ImagePreviewProps) {
   const [urlPreview, setUrlPreview] = useState<Post>({})
   const [defaultPic, setDefaultPic] = useState(false)
 
-  if (article.id === 14) {
-    article.image
-  }
   useEffect(() => {
     if (!article.url) {
       setDefaultPic(true)

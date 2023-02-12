@@ -1,4 +1,20 @@
-import { Article } from "../schema/type";
+export interface Article {
+  id: number;
+  deleted?: boolean;
+  type?: string;
+  by?: string;
+  time?: number;
+  dead?: boolean;
+  kids?: [number];
+  descendants?: number;
+  score?: number;
+  title?: string;
+  url: string;
+  image?: string | any | null;
+  description?: string;
+  new?: Boolean;
+  defaultPic?: Boolean;
+}
 
 export async function fetchUrlPreview(url: string) {
   try {

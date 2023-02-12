@@ -6,7 +6,11 @@ import {
   InMemoryCache,
 } from '@apollo/client'
 import { RestLink } from 'apollo-link-rest'
-import { Appinput } from './schema/type'
+
+export type Appinput = {
+  Component: any
+  pageProps?: any
+}
 
 const restLink = new RestLink({
   uri: 'https://hacker-news.firebaseio.com/v0/item',

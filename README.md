@@ -6,26 +6,35 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ├── .next
 ├── node_modules
 ├── pages
+│   ├── api
+│       ├── fetchPreview.ts
+│       └── urlPreview.ts
+│   ├── assets
 │   ├── components
 │       ├── Navbar.tsx
+│       ├── Navitem.tsx
+│       ├── TabNav.tsx
 │       └── Footer.tsx
 │   ├── index.tsx
-│   ├── App.tsx
-│   ├── EverydayHealth.tsx
-│   ├── Hair.tsx
-│   ├── Lifestyle.tsx
-│   ├── MentalHealth.tsx
-│   ├── Sex.tsx
-│   └── Skin.tsx
+│   ├── _app.tsx
+│   ├── All.tsx
+│   ├── ImagePreview.tsx
+│   ├── Tab.tsx
+│   └── Tabitem.tsx
 ├── public
+│   ├── font
+│   ├── image
 │   ├── favicon.ico
 │   ├── next.svg
 │   ├── thirteen.svg
 │   └──  vercel.svg
 ├── styles
-│   ├── App.modules.css
-│   ├── Home.module.css
-│   └── Components.modules.css
+│   ├── article.modules.css
+│   ├── footer.module.css
+│   ├── global.modules.css
+│   ├── home.module.css
+│   ├── navbar.module.css
+│   └── tab.modules.css
 ├── tsconfig.json
 ├── package.json
 ├── next.config.js
@@ -43,4 +52,14 @@ yarn init
 yarn create next-app --typescript
 yarn add @apollo/client graphql
 yarn dev
+```
+
+## Deploy
+
+```
+1. heroku create
+2. heroku buildpacks:add heroku/nodejs
+3. git add .
+4. git commit -m "Add Heroku build scripts"
+5. git push heroku main
 ```

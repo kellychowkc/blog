@@ -1,48 +1,52 @@
 import { useEffect, useState } from 'react'
-import { Post } from './schema/type'
+import { Article, ImagePreviewProps, Post } from './schema/type'
+import styles from '../styles/article.module.css'
+import { fetchUrlPreview } from './api/fetchPreview'
 
-async function fetchUrlPreview(url: string) {
-  const response = await fetch(`/api/urlPreview?url=${encodeURIComponent(url)}`)
-  const { ogImage, ogTitle, ogDescription } = await response.json()
-
-  return {
-    url,
-    ogImage,
-    ogTitle,
-    ogDescription,
-  }
-}
-
-type ImageLink = {
-  imagelink: string
-}
-
-function ImagePreview(imagelink: ImageLink) {
+function ImagePreview({ article }: ImagePreviewProps) {
   const [urlPreview, setUrlPreview] = useState<Post>({})
-  const [url, setUrl] = useState('')
+  const [defaultPic, setDefaultPic] = useState(false)
 
+  if (article.id === 14) {
+    article.image
+  }
   useEffect(() => {
+    if (!article.url) {
+      setDefaultPic(true)
+      return
+    }
     async function fetchPreview() {
       try {
-        let link = imagelink.imagelink
-        setUrl(link)
-        const preview = await fetchUrlPreview(url)
-        setUrlPreview(preview)
-        console.log('Check', preview)
-      } catch (error) {}
+        let link = article.url
+        const preview = await fetchUrlPreview(link)
+        setUrlPreview(preview!)
+
+        if (!urlPreview.ogImage) {
+          setDefaultPic(true)
+        } else {
+          setDefaultPic(false)
+        }
+      } catch (error) {
+        setDefaultPic(true)
+        console.log(error)
+      }
     }
 
     fetchPreview()
-  }, [])
+  }, [defaultPic])
 
   return (
-    <div>
-      {urlPreview && (
-        <div>
-          <img src={urlPreview.ogImage} />
+    <>
+      {defaultPic ? (
+        <div className={styles.imageBox}>
+          <img src={article.image} alt="image" className={styles.image}></img>
+        </div>
+      ) : (
+        <div className={styles.imageBox}>
+          <img src={urlPreview.ogImage} alt="image" className={styles.image} />
         </div>
       )}
-    </div>
+    </>
   )
 }
 

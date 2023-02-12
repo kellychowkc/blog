@@ -3,12 +3,10 @@ import { useLazyQuery, gql } from '@apollo/client'
 import styles from '../styles/article.module.css'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Image from 'next/image'
 import { RxCross2 } from 'react-icons/rx'
 import { BiAddToQueue } from 'react-icons/bi'
-import { FormControl } from 'react-bootstrap'
-import ImagePreview from './ImagePreview'
+import { Article } from './schema/type'
+import { fetchPreview } from './api/fetchPreview'
 
 const query = gql`
   query GetArticleByID($id: ID) {
@@ -22,22 +20,6 @@ const query = gql`
     }
   }
 `
-export interface Article {
-  id: number
-  deleted?: boolean
-  type?: string
-  by?: string
-  time?: number
-  dead?: boolean
-  kids?: [number]
-  descendants?: number
-  score?: number
-  title: string
-  url: string
-  image?: string | any | null
-  description?: string
-  new?: Boolean
-}
 
 function Articles() {
   const [fetch] = useLazyQuery(query)
@@ -99,7 +81,7 @@ function Articles() {
     }
 
     ;(async function () {
-      for (let i = 4; i < 30; i++) {
+      for (let i = 1; i < 5; i++) {
         try {
           const result: any = await fetchData(i)
           if (result) {
@@ -111,42 +93,42 @@ function Articles() {
           }
         } catch (error) {}
       }
-      list.forEach((article: Article) => {
-        if (article.id < 11) {
-          const updatedArticle = Object.assign({}, article, {
+
+      console.log(list)
+
+      list.forEach(async (article: Article) => {
+        if (!article.url && article.id < 11) {
+          let updatedArticle = Object.assign({}, article, {
             image: `/image/image${article.id}.jpeg`,
           })
-          updateList.push(updatedArticle)
-        } else if (article.id < 21) {
+          console.log('check1', article.id, updatedArticle)
+          return updateList.push(updatedArticle)
+        } else if (!article.url && article.id > 11) {
           let newId = article.id - 10
-          const updatedArticle = Object.assign({}, article, {
+          let updatedArticle = Object.assign({}, article, {
             image: `/image/image${newId}.jpeg`,
           })
-          updateList.push(updatedArticle)
-        } else if (article.id < 31) {
-          let newId = article.id - 20
-          const updatedArticle = Object.assign({}, article, {
-            image: `/image/image${newId}.jpeg`,
-          })
-          updateList.push(updatedArticle)
+          console.log('check2', article.id, updatedArticle)
+          return updateList.push(updatedArticle)
+        } else if (article.url) {
+          let updatedArticle = await fetchPreview(article)
+          console.log('check3', updatedArticle)
+          await updateList.push(updatedArticle)
         }
       })
-
-      const newList = updateList.filter((list) => {
-        return list.id !== 7 && list.id !== 14
-      })
-
-      setArticleList(newList)
+      console.log('check4', updateList)
+      await setArticleList(updateList)
     })()
   }, [])
 
+  console.log('check5', !articleList)
   return (
     <>
       <Container className={styles.container}>
         <Row className={styles.box}>
           {articleList &&
-            articleList.map((article) => (
-              <div key={article.id}>
+            articleList.map((article, index) => (
+              <div key={index}>
                 <div className={styles.post}>
                   {article.new ? (
                     <div className={styles.imageBox}>
@@ -157,9 +139,14 @@ function Articles() {
                       ></img>
                     </div>
                   ) : (
-                    <ImagePreview article={article} />
+                    <div className={styles.imageBox}>
+                      <img
+                        src={article.image}
+                        alt="image"
+                        className={styles.image}
+                      ></img>
+                    </div>
                   )}
-
                   <div className={styles.content}>
                     <h2 className={styles.title}>{article.title}</h2>
                     <p className={styles.subtitle}>{article.by}</p>

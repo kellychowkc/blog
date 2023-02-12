@@ -8,11 +8,12 @@ export interface Article {
   kids?: [number];
   descendants?: number;
   score?: number;
-  title: string;
+  title?: string;
   url: string;
   image?: string | any | null;
   description?: string;
   new?: Boolean;
+  defaultPic?: Boolean;
 }
 
 export type Appinput = {
@@ -38,3 +39,7 @@ export type NavitemInput = {
   subtext?: string;
   active: Boolean;
 };
+
+export interface ImagePreviewProps {
+  article: Article;
+}

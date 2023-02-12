@@ -14,7 +14,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const ogDescription = $('meta[property="og:description"]').attr("content");
 
     res.status(200).json({ ogImage, ogTitle, ogDescription });
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 }

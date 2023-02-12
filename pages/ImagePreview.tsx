@@ -36,7 +36,6 @@ function ImagePreview({ article }: ImagePreviewProps) {
         }
       } catch (error) {
         setDefaultPic(true)
-        console.log(error)
       }
     }
 

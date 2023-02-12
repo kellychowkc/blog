@@ -3,13 +3,11 @@ import { useLazyQuery, gql } from '@apollo/client'
 import styles from '../styles/article.module.css'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Image from 'next/image'
 import { RxCross2 } from 'react-icons/rx'
 import { BiAddToQueue } from 'react-icons/bi'
-import { FormControl } from 'react-bootstrap'
-import Testing from './Testing'
 import { Article } from './schema/type'
+import { Post } from './schema/type'
+import ImagePreview from './ImagePreview'
 
 const query = gql`
   query GetArticleByID($id: ID) {
@@ -117,7 +115,6 @@ function Articles() {
 
   return (
     <>
-      <Testing />
       <Container className={styles.container}>
         <Row className={styles.box}>
           {articleList &&
@@ -141,7 +138,7 @@ function Articles() {
                       ></img>
                     </div>
                   )}
-
+                  <ImagePreview imagelink={article.url} />
                   <div className={styles.content}>
                     <h2 className={styles.title}>{article.title}</h2>
                     <p className={styles.subtitle}>{article.by}</p>

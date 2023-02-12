@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 # blog
 
-Folder Structure
+##Folder Structure
 ```
 ├── .next
 ├── node_modules

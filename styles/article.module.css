@@ -60,8 +60,8 @@
   width: fit-content;
   padding-bottom: 0.25rem;
   border-bottom: 0.125rem solid currentcolor;
-  font-weight: 900;
-
+  font-weight: bolder;
+  cursor: pointer;
   text-align: center;
   text-transform: uppercase;
   transition: all 100ms ease-in 0s;
@@ -98,8 +98,11 @@
   background-color: rgb(204, 131, 92);
   color: #ffffff;
   outline: none;
-  border: solid rgb(204, 131, 92);
   border-radius: 50%;
+}
+
+.newPostMenu:hover {
+  background-color: rgba(234, 168, 133, 0.911);
 }
 .addbtn {
   padding: 2px;
@@ -230,7 +233,7 @@
   font-size: 1.2rem;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .container {
     margin: 0;
     padding: 3rem 0rem;
@@ -252,5 +255,47 @@
   }
   .newPostMenu {
     right: 20px;
+  }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 768px) {
+  .container {
+    margin: 0;
+    padding: 3rem 0rem;
+  }
+
+  .post {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 43.5rem;
+    padding: 0 8rem;
+    margin: 0%;
+  }
+
+  .imageBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .image {
+    padding-bottom: 2rem;
+    width: 100%;
+    max-height: 28rem;
+    background-size: cover;
+    background-position: center 25%;
+    background-repeat: no-repeat;
+  }
+
+  .content {
+    margin-left: 0;
+  }
+
+  .title {
+    font-size: calc(1.8rem + (8 * (100vw - 768px)) / 671);
   }
 }

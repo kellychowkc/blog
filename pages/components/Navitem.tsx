@@ -1,12 +1,6 @@
 import Link from 'next/link'
 import styles from '../../styles/navbar.module.css'
-
-type NavitemInput = {
-  text: string
-  href?: string
-  subtext?: string
-  active: Boolean
-}
+import { NavitemInput } from '../schema/type'
 
 const NavItem = ({ text, subtext, href, active }: NavitemInput) => {
   return (

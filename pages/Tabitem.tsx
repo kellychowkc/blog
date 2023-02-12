@@ -1,11 +1,6 @@
 import Link from 'next/link'
 import styles from '../styles/tab.module.css'
-
-type TabitemInput = {
-  text: string
-  href?: string
-  active: Boolean
-}
+import { TabitemInput } from './schema/type'
 
 const TabItem = ({ text, href, active }: TabitemInput) => {
   return (

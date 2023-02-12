@@ -8,6 +8,8 @@ import Image from 'next/image'
 import { RxCross2 } from 'react-icons/rx'
 import { BiAddToQueue } from 'react-icons/bi'
 import { FormControl } from 'react-bootstrap'
+import Testing from './Testing'
+import { Article } from './schema/type'
 
 const query = gql`
   query GetArticleByID($id: ID) {
@@ -21,22 +23,6 @@ const query = gql`
     }
   }
 `
-export interface Article {
-  id: number
-  deleted?: boolean
-  type?: string
-  by?: string
-  time?: number
-  dead?: boolean
-  kids?: [number]
-  descendants?: number
-  score?: number
-  title: string
-  url: string
-  image?: string | any | null
-  description?: string
-  new?: Boolean
-}
 
 function Articles() {
   const [fetch] = useLazyQuery(query)
@@ -129,10 +115,9 @@ function Articles() {
     })()
   }, [])
 
-  console.log(articleList)
-
   return (
     <>
+      <Testing />
       <Container className={styles.container}>
         <Row className={styles.box}>
           {articleList &&

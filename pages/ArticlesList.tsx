@@ -48,7 +48,7 @@ function Articles() {
     id: 0,
     title: '',
     url: '',
-    description: '',
+    by: '',
     image: null,
     new: true,
   })
@@ -229,10 +229,10 @@ function Articles() {
             </label>
             <div className={styles.textarea}>
               <textarea
-                name="description"
+                name="by"
                 placeholder="Enter description..."
                 onChange={handleChange}
-                value={state.description}
+                value={state.by}
                 required
                 maxLength={500}
                 className={styles.input2}

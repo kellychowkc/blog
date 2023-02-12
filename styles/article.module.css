@@ -248,6 +248,7 @@
 
   .post {
     display: block;
+    padding-bottom: 0;
   }
   .imageBox {
     width: 100%;
@@ -266,6 +267,19 @@
 
   .content {
     margin-left: 0;
+  }
+  .newPostMenuList {
+    width: 80%;
+    transition: all 0.3s;
+    height: 75%;
+  }
+
+  .newPostMenuList.active {
+    background-color: rgb(190, 190, 190);
+    left: 10%;
+    border-radius: 2rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 }
 

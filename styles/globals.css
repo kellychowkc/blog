@@ -8,12 +8,19 @@
 @font-face {
   font-family: 'SofiaProWeb';
   src: url('/font/SofiaProBold.ttf');
-  font-weight: normal; /* semi-bold */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'nicholasBold';
+  src: url('/font/nicholasBold.ttf');
+  font-weight: normal;
   font-style: normal;
 }
 
 body {
-  font-family: Sofia, SofiaProWeb, Helvetica, Arial, sans-serif;
+  font-family: Sofia, SofiaProWeb, nicholasBold, Helvetica, Arial, sans-serif;
   margin: 0 auto;
   min-height: 100vh;
   min-width: 100vw;

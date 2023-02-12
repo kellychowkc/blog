@@ -6,6 +6,7 @@ import { RxCross2 } from 'react-icons/rx'
 import { BsFillMoonFill } from 'react-icons/bs'
 import { BsFillSunFill } from 'react-icons/bs'
 import { AiOutlineRight } from 'react-icons/ai'
+import TabNav from './TabNav'
 
 const MenuList = [
   {
@@ -28,6 +29,19 @@ const Navbar = () => {
   const [navActive, setNavActive] = useState<Boolean>()
   const [activeIdx, setActiveIdx] = useState(-1)
   const [darkMode, setDarkMode] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    function handleScroll() {
+      if (window.scrollY > 840 && window.innerWidth > 1023) {
+        setScrolled(true)
+      } else {
+        setScrolled(false)
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  })
 
   useEffect(() => {
     if (darkMode) {
@@ -43,58 +57,62 @@ const Navbar = () => {
 
   return (
     <>
-      <div className={`${darkMode ? styles.headerDark : styles.header}`}>
-        <nav className={styles.nav}>
-          <div className={styles.logoBox}>
-            <Link href={'/'} className={styles.link}>
-              <h1 className={styles.title}>hims</h1>
-            </Link>
-          </div>
-          <div className={styles.toggleBox}>
-            <div onClick={toggleDarkMode} className={styles.toggle}>
-              {darkMode ? <BsFillSunFill /> : <BsFillMoonFill />}
+      {scrolled ? (
+        <TabNav />
+      ) : (
+        <div className={`${darkMode ? styles.headerDark : styles.header}`}>
+          <nav className={styles.nav}>
+            <div className={styles.logoBox}>
+              <Link href={'/'} className={styles.link}>
+                <h1 className={styles.title}>hims</h1>
+              </Link>
+            </div>
+            <div className={styles.toggleBox}>
+              <div onClick={toggleDarkMode} className={styles.toggle}>
+                {darkMode ? <BsFillSunFill /> : <BsFillMoonFill />}
+              </div>
+              <div
+                onClick={() => setNavActive(!navActive)}
+                className={`${darkMode ? styles.navMenuDark : styles.navMenu}`}
+              >
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
             </div>
             <div
-              onClick={() => setNavActive(!navActive)}
-              className={`${darkMode ? styles.navMenuDark : styles.navMenu}`}
+              className={`${navActive ? styles.active : ''} ${
+                styles.navMenulist
+              }`}
             >
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-          </div>
-          <div
-            className={`${navActive ? styles.active : ''} ${
-              styles.navMenulist
-            }`}
-          >
-            <div className={styles.menuListHead}>
-              <div className={styles.signinBox}>Sign in</div>
-              <div
-                className={styles.buttonBox}
-                onClick={() => {
-                  setNavActive(!navActive)
-                }}
-              >
-                <RxCross2 className={styles.cross} />
+              <div className={styles.menuListHead}>
+                <div className={styles.signinBox}>Sign in</div>
+                <div
+                  className={styles.buttonBox}
+                  onClick={() => {
+                    setNavActive(!navActive)
+                  }}
+                >
+                  <RxCross2 className={styles.cross} />
+                </div>
               </div>
+              {MenuList.map((menu, idx) => (
+                <div
+                  onClick={() => {
+                    setActiveIdx(idx)
+                    setNavActive(false)
+                  }}
+                  key={menu.text}
+                  className={styles.navitem}
+                >
+                  <NavItem active={activeIdx === idx} {...menu} />
+                  <AiOutlineRight className={styles.right} />
+                </div>
+              ))}
             </div>
-            {MenuList.map((menu, idx) => (
-              <div
-                onClick={() => {
-                  setActiveIdx(idx)
-                  setNavActive(false)
-                }}
-                key={menu.text}
-                className={styles.navitem}
-              >
-                <NavItem active={activeIdx === idx} {...menu} />
-                <AiOutlineRight className={styles.right} />
-              </div>
-            ))}
-          </div>
-        </nav>
-      </div>
+          </nav>
+        </div>
+      )}
     </>
   )
 }

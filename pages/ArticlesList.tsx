@@ -3,11 +3,8 @@ import { useLazyQuery, gql } from '@apollo/client'
 import styles from '../styles/article.module.css'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Image from 'next/image'
 import { RxCross2 } from 'react-icons/rx'
 import { BiAddToQueue } from 'react-icons/bi'
-import { FormControl } from 'react-bootstrap'
 import ImagePreview from './ImagePreview'
 
 const query = gql`

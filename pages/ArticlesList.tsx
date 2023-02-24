@@ -47,6 +47,7 @@ interface State {
 function Articles() {
   const [fetch] = useLazyQuery(query)
   const [postActive, setPostActive] = useState<Boolean>()
+  const [submit, setSubmit] = useState(false)
   const [articleList, setArticleList] = useState<Array<Article>>()
   const [imageStore, setImageStore] = useState('')
   const [state, setState] = useState<State>({
@@ -67,7 +68,8 @@ function Articles() {
       image: null,
       new: true,
     })
-  }, [articleList])
+    setImageStore('')
+  }, [submit])
 
   function handleChange(e: any) {
     let id = articleList!.length + 26
@@ -88,6 +90,8 @@ function Articles() {
     let newList = articleList
     newList!.unshift(state)
     setPostActive(!postActive)
+    setSubmit(!submit)
+    e.currentTarget.reset()
   }
 
   function handleImageChange(e: any) {

@@ -35,13 +35,21 @@ export interface Article {
   description?: string
   new?: Boolean
 }
+interface State {
+  id: number
+  title: string
+  url: string
+  by: string
+  image: string | null
+  new: boolean
+}
 
 function Articles() {
   const [fetch] = useLazyQuery(query)
   const [postActive, setPostActive] = useState<Boolean>()
   const [articleList, setArticleList] = useState<Array<Article>>()
   const [imageStore, setImageStore] = useState('')
-  const [state, setState] = useState({
+  const [state, setState] = useState<State>({
     id: 0,
     title: '',
     url: '',
@@ -50,8 +58,19 @@ function Articles() {
     new: true,
   })
 
+  useEffect(() => {
+    setState({
+      id: 0,
+      title: '',
+      url: '',
+      by: '',
+      image: null,
+      new: true,
+    })
+  }, [articleList])
+
   function handleChange(e: any) {
-    let id = articleList!.length + 2
+    let id = articleList!.length + 26
     if (e.target.files) {
       setState({
         ...state,
@@ -64,20 +83,23 @@ function Articles() {
   }
 
   function handleSubmit(e: any) {
+    setState({ ...state })
     e.preventDefault()
     let newList = articleList
     newList!.unshift(state)
     setPostActive(!postActive)
+    console.log(articleList)
   }
 
   function handleImageChange(e: any) {
-    let id = articleList!.length + 2
+    let id = articleList!.length + 26
     const file = e.target.files[0]
     const reader = new FileReader()
     const url = reader.readAsDataURL(file)
     reader.onloadend = function (e) {
-      setImageStore(reader.result as string)
-      setState({ ...state, ['image']: file, ['id']: id })
+      const result = reader.result as string
+      setImageStore(result)
+      setState({ ...state, image: result, id: id })
     }
   }
 
@@ -167,7 +189,7 @@ function Articles() {
                   {article.new ? (
                     <div className={styles.imageBox}>
                       <img
-                        src={imageStore}
+                        src={article.image}
                         alt="image"
                         className={styles.image}
                       ></img>

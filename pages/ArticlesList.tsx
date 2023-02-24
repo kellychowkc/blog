@@ -88,7 +88,6 @@ function Articles() {
     let newList = articleList
     newList!.unshift(state)
     setPostActive(!postActive)
-    console.log(articleList)
   }
 
   function handleImageChange(e: any) {
@@ -173,7 +172,6 @@ function Articles() {
         )
       })
 
-      console.log(newList)
       setArticleList(newList)
     })()
   }, [])
@@ -281,6 +279,7 @@ function Articles() {
               name="image"
               className={styles.uploadBtn}
               onChange={handleImageChange}
+              required
             />
 
             <div className={styles.imageContainer}>

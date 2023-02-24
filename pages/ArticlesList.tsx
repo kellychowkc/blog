@@ -96,7 +96,7 @@ function Articles() {
     }
 
     ;(async function () {
-      for (let i = 4; i < 30; i++) {
+      for (let i = 4; i < 50; i++) {
         try {
           const result: any = await fetchData(i)
           if (result) {
@@ -126,13 +126,32 @@ function Articles() {
             image: `/image/image${newId}.jpeg`,
           })
           updateList.push(updatedArticle)
+        } else if (article.id < 41) {
+          let newId = article.id - 30
+          const updatedArticle = Object.assign({}, article, {
+            image: `/image/image${newId}.jpeg`,
+          })
+          updateList.push(updatedArticle)
+        } else if (article.id < 51) {
+          let newId = article.id - 40
+          const updatedArticle = Object.assign({}, article, {
+            image: `/image/image${newId}.jpeg`,
+          })
+          updateList.push(updatedArticle)
         }
       })
 
       const newList = updateList.filter((list) => {
-        return list.id !== 7 && list.id !== 14
+        return (
+          !list.id.toString().includes('7') &&
+          list.id !== 32 &&
+          list.id !== 14 &&
+          list.title !== null &&
+          list.url !== null
+        )
       })
 
+      console.log(newList)
       setArticleList(newList)
     })()
   }, [])

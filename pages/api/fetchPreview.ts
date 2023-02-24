@@ -39,8 +39,23 @@ export async function fetchPreview(article: Article) {
         updatedArticle = Object.assign({}, article, {
           image: `/image/image${article.id}.jpeg`,
         });
-      } else {
+      } else if (article.id < 21) {
         let newId = article.id - 10;
+        updatedArticle = Object.assign({}, article, {
+          image: `/image/image${newId}.jpeg`,
+        });
+      } else if (article.id < 31) {
+        let newId = article.id - 20;
+        updatedArticle = Object.assign({}, article, {
+          image: `/image/image${newId}.jpeg`,
+        });
+      } else if (article.id < 41) {
+        let newId = article.id - 30;
+        updatedArticle = Object.assign({}, article, {
+          image: `/image/image${newId}.jpeg`,
+        });
+      } else if (article.id < 51) {
+        let newId = article.id - 40;
         updatedArticle = Object.assign({}, article, {
           image: `/image/image${newId}.jpeg`,
         });
